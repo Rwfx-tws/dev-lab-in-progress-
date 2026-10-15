@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="barra-topo">
+        <ul>
+            <li><a href="#">Início</a></li>
+            <li><a href="#">Produtos</a></li>
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    </nav>
+
+    <div class="aviso">
+
+        <h2>Boas vindas</h2>
+
+        <p class="mensagem">Frete grátis para produtos acima de 150 R$</p>
+        <span id="fechar-aviso">x</span>
+    </div>
+    <main>
+
+        <div class="infromaç~oes">
+    
+            <div class="text1">
+    
+                <h1>Como fazer miojo</h1>
+    
+                <p>Para fazer um miojo tradicional, ferva cerca de 450 ml de água em uma panela, coloque o macarrão
+                    instantâneo e cozinhe por 3 minutos mexendo de vez em quando, depois desligue o fogo, adicione o sachê
+                    de tempero e misture bem.
+    
+                    Passo a passo simples: <br>
+    
+                    <ol>
+                        <li>
+                            <span>Esquentar a água: Coloque cerca de 450 ml de água (ou a quantidade indicada no verso da
+                                embalagem) em uma panela.</span><br>
+                            
+                        </li>
+                        <li>
+                            <span>Ferver: Leve ao fogo alto até a água começar a borbulhar.</span><br>
+                        
+                        </li>
+                        <li>
+                            <span>Cozinhar a massa: Coloque o miojo inteiro ou partido ao meio na água fervente. Deixe cozinhar
+                                por aproximadamente 3 minutos.</span><br>
+                            
+                        </li>
+                        <li>
+                            <span>Adicionar o tempero: Desligue o fogo (ou abaixe bem), despeje o sachê de tempero que acompanha
+                                o produto e mexa bem até dissolver.</span><br>
+                            
+                        </li>
+                        <li>
+                        
+                            <span>Servir: Coloque em um prato e tome cuidado com a temperatura para não se queimar.
+                                </span><br>
+                        </li>
+                    </ol>
+    
+                </p>
+            </div>
+    
+    
+        </div>
+
+        <div class="infromaç~oes">
+    
+            <div class="text1">
+    
+                <h1>Como fazer miojo</h1>
+    
+                <p>Para fazer um miojo tradicional, ferva cerca de 450 ml de água em uma panela, coloque o macarrão
+                    instantâneo e cozinhe por 3 minutos mexendo de vez em quando, depois desligue o fogo, adicione o sachê
+                    de tempero e misture bem.
+    
+                    Passo a passo simples: <br>
+    
+                    <ol>
+                        <li>
+                            <span>Esquentar a água: Coloque cerca de 450 ml de água (ou a quantidade indicada no verso da
+                                embalagem) em uma panela.</span><br>
+                            
+                        </li>
+                        <li>
+                            <span>Ferver: Leve ao fogo alto até a água começar a borbulhar.</span><br>
+                        
+                        </li>
+                        <li>
+                            <span>Cozinhar a massa: Coloque o miojo inteiro ou partido ao meio na água fervente. Deixe cozinhar
+                                por aproximadamente 3 minutos.</span><br>
+                            
+                        </li>
+                        <li>
+                            <span>Adicionar o tempero: Desligue o fogo (ou abaixe bem), despeje o sachê de tempero que acompanha
+                                o produto e mexa bem até dissolver.</span><br>
+                            
+                        </li>
+                        <li>
+                        
+                            <span>Servir: Coloque em um prato e tome cuidado com a temperatura para não se queimar.
+                                </span><br>
+                        </li>
+                    </ol>
+    
+                </p>
+            </div>
+    
+    
+        </div>
+    </main>
+
+
+</body>
+
+</html>
+/* :root{
+
+} */ 
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color:gray;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.barra-topo{
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color:aquamarine;
+    position: fixed;
+    padding:10px;
+    margin-bottom:2px ;
+    z-index: 1000;
+}
+
+.barra-topo ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.barra-topo li{
+    float: left;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.barra-topo a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+
+}
+
+.barra-topo a:hover{
+    color:red
+}
+
+.aviso{
+    background-color: rgb(231, 152, 78);
+    position: relative;
+    padding: 6px;
+    margin-top: 60px;
+}
+.aviso h2{
+    color: rgb(192, 0, 250);
+}
+
+.mensagem{
+    color: white;
+    right: 3px;
+}
+
+#fechar-aviso{
+    position: absolute;
+    right:5px;
+    top: 1px;
+    background-color: red;
+    color: white;
+    padding: 2px;
+    padding-top:0px ;
+    padding-bottom: 0px;
+    cursor: pointer;
+}
+
+.text1{
+    margin: 30px;
+}
+
+main h1{
+    color: #01fa54;
+    text-align: center;
+}
+
+
+
