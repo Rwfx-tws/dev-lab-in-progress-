@@ -1,0 +1,40 @@
+create database Loja_tecnologia;
+
+use Loja_tecnologia;
+
+create table produtos(
+
+	id_produto INTEGER PRIMARY KEY auto_increment,
+	nome_produto VARCHAR(45) NOT NULL,
+	categoria VARCHAR(50) NOT NULL,
+	preco DECIMAL(8,2) NOT NULL,
+	estuoque INTEGER NOT NULL
+
+);
+
+ALTER table produtos RENAME COLUMN estuoque TO estoque;
+INSERT INTO produtos(nome_produto, categoria, preco, estoque)
+	VALUES
+		('Smartphone Galaxy S24', 'Celulares', 4999.00, 15),
+		('Notebook Dell Inspiron', 'Informática', 3899.90, 8),
+		('Monitor Gamer 27"', 'Monitores', 1499.00, 12),
+		('Teclado Mecânico RGB', 'Acessórios', 349.90, 25),
+		('Fone de Ouvido Bluetooth', 'Áudio', 299.00, 40
+	);
+	
+update produtos set preco='2999,90' WHERE id_produto = 3;
+update produtos set estoque = estoque + 10 where id_produto = 1;
+update produtos set preco = preco * 1.05 where categoria = 'Periféricos';
+
+DELETE FROM produtos where id_produto = 4;
+
+UPDATE produtos set estoque = estoque - 3 where id_produto = 2;
+SELECT * from produtos;
+
+update produtos set estoque = estoque + 20 where categoria = 'Hardware';
+
+update produtos set preco = preco * 1.10 where preco > 3000;
+update produtos set estoque = estoque + 25, preco = '3799.90' where id_produto = 2;
+delete from produtos where estoque = 0;
+update produtos set estoque = estoque - 2, preco = preco + 100 where id_produto =1;
+SELECT * from produtos where id_produto =1; 
