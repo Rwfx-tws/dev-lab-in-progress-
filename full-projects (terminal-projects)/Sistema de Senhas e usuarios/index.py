@@ -11,6 +11,8 @@ if conexao.is_connected():
     print(f"A conexão com o banco foi realizada com sucesso!")
     cursor = conexao.cursor()
     
+    # Menu de opções
+    
     while True:
         print("\n" + "="*30)
         print("      GERENCIADOR DE SENHAS      ")
@@ -23,7 +25,11 @@ if conexao.is_connected():
         
         opcao =input("Digite uma opcao: ")
         
+        # Verifica se a opção é válida
+        
         if opcao == "1":
+            
+            # Cadastrar Usuário Mestre
             
             print("\n--- CADASTRAR USUÁRIO MESTRE ---")
             nome_mestre = input("Digite o nome do usuario mestre:")
@@ -32,28 +38,40 @@ if conexao.is_connected():
             
             user_exist = cursor.fetchone()
             
+            # Verifica se o usuário já existe no banco de dados
+            
             if user_exist is not None:
                 print(f"O usuario '{nome_mestre}' Já esta cadastrado no sistema!!")
                 continue
             else:
-            
+                
+             #  Cadastrar o usuário no banco de dados
+             
                 query_add_user = " INSERT INTO usuario (nome_usuario)  VALUE (%s)"
                 cursor.execute(query_add_user, (nome_mestre,))
                 conexao.commit()
                 print(f"Usuario {nome_mestre} cadastrado com sucesso!")
+         
+         # Cadastrar Senha de Serviço
             
         elif opcao == "2":
             print("\n--- CADASTRAR SENHA DE SERVIÇO ---")
             nome_mestre = input("Digite o nome de usuario")
-            
+             
+             # Verifica se o usuário mestre existe no banco de dados
+             
             query_id = "SELECT FROM usuario WHERE nome_usuario = (%s)"
             cursor.execute(query_id, (nome_mestre,))
             resultado = cursor.fetchone()
+            
+            # Se o usuário não existir, exibe uma mensagem de erro e solicita o cadastro do usuário mestre primeiro
             
             if resultado is None:
                 print("Usuario não cadastrado, cadastreo primeiro")
                 continue
             else:
+                
+                # Se o usuário existir, solicita os dados do serviço e armazena a senha no banco de dados
                 
                 id_do_usuario = resultado[0]
                 
@@ -70,8 +88,13 @@ if conexao.is_connected():
                 conexao.commit()
                 print(f"A senha do {servico} foi adicionada ao banco com sucesso!")
         
+        
+        # Listar Senhas do Usuário Mestre
+        
         elif opcao == "3":
             print("\n--- LOCALIZAR SENHAS DO USUARIO ---")
+            
+            # Solicita o nome do usuário mestre para buscar suas senhas no banco de dados
             
             nome_mestre = input("Digite seu nome de usuário mestre para ver suas senhas: ")
             
@@ -84,6 +107,9 @@ if conexao.is_connected():
             cursor.execute(query_busca, (nome_mestre,))
             senhas_encontradas = cursor.fetchall()
             
+            
+            # Verifica se foram encontradas senhas para o usuário mestre informado e exibe as informações de cada senha encontrada
+            
             if not senhas_encontradas:
                 print("nem uma senha encontrada")
             else:
@@ -92,7 +118,8 @@ if conexao.is_connected():
                     print(f"Login:{s[1]}")
                     print(f"Senha:{s[2]}")
                     print("-"*20)
-                         
+              
+        # Sair do sistema           
         elif opcao == "4":
             print("Saindo do sistema...")
             
