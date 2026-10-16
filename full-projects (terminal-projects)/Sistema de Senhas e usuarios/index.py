@@ -21,19 +21,26 @@ if conexao.is_connected():
         print("4. Sair")
         print("="*30)
         
-        opcao =input("Digite uma opcao")
+        opcao =input("Digite uma opcao: ")
         
         if opcao == "1":
             
             print("\n--- CADASTRAR USUÁRIO MESTRE ---")
             nome_mestre = input("Digite o nome do usuario mestre:")
             
-            query_add_user = " INSERT INTO usuario (nome_usuario)  VALUE (%s)"
+            query_verify = "SELECT FROM usuario where nome_usuario = %s"
             
-            cursor.execute(query_add_user, (nome_mestre,))
-            conexao.commit()
+            user_exist = cursor.fetchone()
             
-            print(f"Usuario {nome_mestre} cadastrado com sucesso!")
+            if user_exist is not None:
+                print(f"O usuario '{nome_mestre}' Já esta cadastrado no sistema!!")
+                continue
+            else:
+            
+                query_add_user = " INSERT INTO usuario (nome_usuario)  VALUE (%s)"
+                cursor.execute(query_add_user, (nome_mestre,))
+                conexao.commit()
+                print(f"Usuario {nome_mestre} cadastrado com sucesso!")
             
         elif opcao == "2":
             print("\n--- CADASTRAR SENHA DE SERVIÇO ---")
@@ -88,6 +95,7 @@ if conexao.is_connected():
                          
         elif opcao == "4":
             print("Saindo do sistema...")
+            
             break
     
     cursor.close()
