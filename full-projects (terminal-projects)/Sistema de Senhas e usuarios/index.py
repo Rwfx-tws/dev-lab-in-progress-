@@ -35,7 +35,7 @@ if conexao.is_connected():
             nome_mestre = input("Digite o nome do usuario mestre:")
             
             query_verify = "SELECT FROM usuario where nome_usuario = %s"
-            
+            cursor.execute(query_verify, (nome_mestre,))
             user_exist = cursor.fetchone()
             
             # Verifica se o usuário já existe no banco de dados
@@ -60,7 +60,7 @@ if conexao.is_connected():
              
              # Verifica se o usuário mestre existe no banco de dados
              
-            query_id = "SELECT FROM usuario WHERE nome_usuario = (%s)"
+            query_id = "SELECT id_usuario FROM usuario WHERE nome_usuario = (%s)"
             cursor.execute(query_id, (nome_mestre,))
             resultado = cursor.fetchone()
             
