@@ -26,20 +26,20 @@ if conexao.is_connected():
         if opcao == "1":
             
             print("\n--- CADASTRAR USUÁRIO MESTRE ---")
-            nome_usuario = input("Digite o nome do usuario mestre:")
+            nome_mestre = input("Digite o nome do usuario mestre:")
             
             query_add_user = " INSERT INTO usuario (nome_usuario)  VALUE (%s)"
             
-            cursor.execute(query_add_user, (nome_usuario,))
+            cursor.execute(query_add_user, (nome_mestre,))
             conexao.commit()
             
-            print(f"Usuario {nome_usuario} cadastrado com sucesso!")
+            print(f"Usuario {nome_mestre} cadastrado com sucesso!")
             
         elif opcao == "2":
             print("\n--- CADASTRAR SENHA DE SERVIÇO ---")
             nome_mestre = input("Digite o nome de usuario")
             
-            query_id = "SELECT FROM usuarios WHERE nome_usuario = (%s)"
+            query_id = "SELECT FROM usuario WHERE nome_usuario = (%s)"
             cursor.execute(query_id, (nome_mestre,))
             resultado = cursor.fetchone()
             
@@ -55,10 +55,12 @@ if conexao.is_connected():
                 login = input(f"Login/E-mail usado no {servico}: ")
                 senha_servico = input(f"Senha do {servico}: ")
                 
-                query_add_senha = """ INSERT INTO senhas (nome_servico, login_servico, senha_armazenada, id_usuario)
+                query_add_senha = """
+                    INSERT INTO senhas (nome_servico, login_servico, senha_armazenada, id_usuario)
+                    VALUES(%s, %s, %s, %s)
                 """
                 cursor.execute(query_add_senha, (servico, login, senha_servico, id_do_usuario))
-                cursor.commit()
+                conexao.commit()
                 print(f"A senha do {servico} foi adicionada ao banco com sucesso!")
         
         elif opcao == "3":
@@ -70,9 +72,9 @@ if conexao.is_connected():
                 SELECT s.nome_servico, s.login_servico, s.senha_armazenada
                 FROM senhas AS s
                 JOIN usuario AS u ON s.id_usuario = u.id_usuario
-                WHERE nome_usuario = s%
+                WHERE nome_usuario = %s
             """
-            cursor.execute(query_busca, (nome_mestre))
+            cursor.execute(query_busca, (nome_mestre,))
             senhas_encontradas = cursor.fetchall()
             
             if not senhas_encontradas:
