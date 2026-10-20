@@ -18,7 +18,7 @@ for l in range(3):
             pos_c = c
         if matriz[l][c] > 80:
             print("!!⚠️☢️ALERTA TEMPERATURA MAIOR QUE 80 IDENTIFICADA☢️⚠️!!")
-        print(f"Posição: Linha {l}, Coluna {c}")
+            print(f"Posição: Linha {l}, Coluna {c}")
         
 print(f"A maior temperatura registrada foi: {mtemp}°C")
 print(f"Posição do maior valor:\n Linha {pos_l},\n Coluna {pos_c}")
