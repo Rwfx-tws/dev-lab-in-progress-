@@ -65,3 +65,12 @@ SELECT nome, desconto_vt FROM funcionarios where desconto_vt is not NULL;
 SELECT * FROM funcionarios where departamento in ('TI','Comercial') 
 	and salario BETWEEN 2000.00 and 7000.00 
 	and nome not like '%II';
+	
+SELECT * FROM funcionarios where nome like "%a";
+SELECT nome, departamento, data_admissao FROM funcionarios where data_admissao BETWEEN '2020-01-01' and '2022-12-31';
+SELECT * FROM funcionarios where cidade in('Hortolândia','Sumaré', 'Americana');
+SELECT nome, salario FROM funcionarios where desconto_vt is not NULL;
+
+SELECT * FROM funcionarios where departamento in ('TI', 'Financeiro')
+	and salario BETWEEN 4000.00 and 9000.00
+	and nome not like 'A%';
