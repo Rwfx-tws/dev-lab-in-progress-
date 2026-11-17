@@ -1,0 +1,51 @@
+def filter_valid_grades(grades):
+    valid_grade = []
+    for grade in grades:
+        if grade <= 10 and grade >= 0:
+            valid_grade.append(grade)
+    return(valid_grade)
+
+def calculate_summary(valid_grades):
+
+    maxvalue = valid_grades[0]
+    minvalue = valid_grades[0]
+
+    for grade in valid_grades:
+
+        if grade > maxvalue:
+            maxvalue = grade
+        elif grade < minvalue:
+            minvalue = grade
+
+    return(maxvalue, minvalue)
+
+def classify_students(valid_grades):
+    failed_studants = 0
+    passed_studants = 0 
+    total = 0
+
+    for i in range(len(valid_grades)):
+        grade = valid_grades[i]
+        total += grade  
+
+        if grade >= 6:
+            passed_studants += 1
+        else:
+            failed_studants+=1
+
+        averege = total / len(valid_grades)
+    return(averege,failed_studants, passed_studants)
+
+
+all_grades =[8.5, -2.0, 6.0, 11.5, 4.5, 9.0, 7.0, 34, 54]
+# for i in range(10):
+#     grade = float(input(f"type the {i}° grade to add in list:"))
+#     all_grades.append(grade)
+list_Valid_grade = filter_valid_grades(all_grades)
+
+print(f"The list of valid grades is: \n {list_Valid_grade}")
+
+max_val, min_val = calculate_summary(list_Valid_grade)
+avg, failed, passed = classify_students(list_Valid_grade)
+
+print(f"Max:{max_val}, Min: {min_val}, Averagee: {avg}, Passed: {passed}, Faeiled: {failed} ")
